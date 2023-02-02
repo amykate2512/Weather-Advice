@@ -14,6 +14,9 @@
     <dmn:itemComponent id="_77A30029-BF8A-4A0D-8207-032D24B40BB8" name="rainForecast" isCollection="false">
       <dmn:typeRef>number</dmn:typeRef>
     </dmn:itemComponent>
+    <dmn:itemComponent id="_D83B927F-DF34-40C9-B990-28BB215CE465" name="stormAlert" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
   </dmn:itemDefinition>
   <dmn:inputData id="_34BEC54B-05DB-47BC-A6D2-17F76F1A1F51" name="Name">
     <dmn:extensionElements/>
@@ -42,7 +45,7 @@
     <dmn:informationRequirement id="_DF9530E7-8905-45C7-8D8B-87D509CC3D69">
       <dmn:requiredInput href="#_AEA7C844-BE57-482F-976C-F795BE67D8E4"/>
     </dmn:informationRequirement>
-    <dmn:decisionTable id="_DB359351-BB36-4933-A33A-DE71C434F385" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+    <dmn:decisionTable id="_DB359351-BB36-4933-A33A-DE71C434F385" hitPolicy="FIRST" preferredOrientation="Rule-as-Row">
       <dmn:input id="_BF003364-45A4-4C36-825F-B4BA23D8E594">
         <dmn:inputExpression id="_EA053273-156B-4AAB-A862-CC2D89F457AD" typeRef="number">
           <dmn:text>Weather.rainForecast</dmn:text>
@@ -53,14 +56,39 @@
           <dmn:text>Weather,temperature</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
+      <dmn:input id="_19CE9F8E-9F7C-4235-8542-0698318A2EFA">
+        <dmn:inputExpression id="_A261CF80-1539-4557-A5D0-82078AB198F9" typeRef="boolean">
+          <dmn:text>Weather.stormAlert</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
       <dmn:output id="_3BCEE763-876B-4CC3-BBD0-B336C9BE62DD"/>
       <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_343EECA2-B764-48C3-A439-C554135F4DC7">
+        <dmn:inputEntry id="_C450CFF5-B586-4DFD-9676-6263FAE23B81">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_429C0519-B01C-466A-B1FC-B4A882E38A66">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ADCCC081-284A-482D-9161-2657B4F3E090">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_E9A63143-C610-4B1F-A379-99F0C035256D">
+          <dmn:text>"Stay home! There is a storm alert."</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
       <dmn:rule id="_5FCD0739-A073-4E9C-87F3-EDB38B5E0117">
         <dmn:inputEntry id="_40F0F8E3-2361-42DA-B331-D239AB4FEC88">
           <dmn:text>[0..20)</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_729228C6-4F57-480E-8499-26AD66ABDC33">
           <dmn:text>"cold"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3FE456AF-CAE4-4ADC-B674-7AEC073A2C67">
+          <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_ECCAA4A7-D3B1-4C11-85B6-BE65136C8E2A">
           <dmn:text>"Cold day. Take a coat."</dmn:text>
@@ -76,6 +104,9 @@
         <dmn:inputEntry id="_652ABC2E-FC0B-45E4-A40A-D8369E98DBF1">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
+        <dmn:inputEntry id="_8C1C6DE6-6C64-460D-BBB3-51ABFDBC3544">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
         <dmn:outputEntry id="_B162AFC6-D045-418A-A1DC-C40E53C158A9">
           <dmn:text>"Risk of rain. Might need an umbrella."</dmn:text>
         </dmn:outputEntry>
@@ -88,6 +119,9 @@
           <dmn:text>[80..100)</dmn:text>
         </dmn:inputEntry>
         <dmn:inputEntry id="_031D5CFE-3F95-4772-A6AD-213D6B583821">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7085F140-AD82-4424-89B7-3C78EED91070">
           <dmn:text>-</dmn:text>
         </dmn:inputEntry>
         <dmn:outputEntry id="_D7382247-BC7F-417A-A310-EB813463E0B2">
@@ -108,6 +142,7 @@
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_DB359351-BB36-4933-A33A-DE71C434F385">
             <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
             <kie:width>100</kie:width>
             <kie:width>100</kie:width>
             <kie:width>363</kie:width>
